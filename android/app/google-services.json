@@ -1,0 +1,40 @@
+ {
+  "project_info": {
+    "project_number": "723702670952",
+    "firebase_url": "https://myfb-54ea4-default-rtdb.firebaseio.com",
+    "project_id": "myfb-54ea4",
+    "storage_bucket": "myfb-54ea4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723702670952:android:c64a18b200193c43e9fddd",
+        "android_client_info": {
+          "package_name": "com.industrialmaster.fbapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723702670952-1n8gm4h2h9704b3nnmhshqjv461fb3te.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ01FFaM2vw-65rlVXZUVSXqhEKXy8xco"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723702670952-1n8gm4h2h9704b3nnmhshqjv461fb3te.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

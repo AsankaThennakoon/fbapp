@@ -1,0 +1,114 @@
+import React from 'react';
+
+
+import {View,Text} from 'react-native';
+import Logo from '../components/Logo';
+import MyButton from '../components/MyButton';
+import TextBox from '../components/TextBox';
+import ToolBar from '../components/ToolBar';
+
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+
+class LoginPage extends React.Component{
+
+    constructor(props){
+        super(props);
+
+        this.state={email:'',password:''};
+
+
+
+        this.Login=this.Login.bind(this);
+        this.Register=this.Register.bind(this);
+    }
+
+     //intialize firebase
+     componentDidMount(){
+
+
+        //here i add this if it is already intia;ized within anothe page it will not occure here so i add the if condition
+        if(!firebase.apps.length){
+
+            var firebaseConfig = {
+                apiKey: "AIzaSyCpwQu_Mh0ZFcpTsF6yx8nxy-kmepkLQbM",
+                authDomain: "myfb-54ea4.firebaseapp.com",
+                databaseURL: "https://myfb-54ea4-default-rtdb.firebaseio.com/",
+                projectId: "myfb-54ea4",
+                storageBucket: "myfb-54ea4.appspot.com",
+                messagingSenderId: "723702670952",
+                appId: "1:723702670952:android:c64a18b200193c43e9fddd",
+                measurementId: "G-8GSGZQ44ST"
+              };
+    
+              firebase.initializeApp(firebaseConfig);
+              console.log(firebase);
+    
+
+
+        }
+    }
+
+
+    render(){
+        return(
+            <View>
+                <ToolBar title="Login Page"></ToolBar>
+                <Logo/>
+                <TextBox 
+                 lable="Enter the Email" 
+                 name="email"
+                 value={this.state.email} 
+                 oct={(text)=>this.setState({email:text})}
+                 hint="Asanka@gmile.com"/>
+
+                <TextBox
+                 lable="Enter the Password" 
+                 hint="1234" 
+                 name="password"
+                 value={this.state.password}  
+                 oct={(text)=>this.setState({password:text})}></TextBox>
+                <MyButton title="LOGIN" onPress={this.Login} />
+
+                <Text style={{textAlign:'center'}}>Dont have an Account?</Text>
+                <MyButton title="REGISTER" onPress={this.Register}/>
+            </View>
+        );
+
+    }
+
+
+    Register(){
+        const {navigate} =this.props.navigation;
+        navigate("Register");
+
+    }
+    Login(){
+        
+        
+        let email =this.state.email;
+        let password=this.state.password;
+        let {navigate} = this.props.navigation;
+
+
+        firebase.auth().signInWithEmailAndPassword(email,password)
+        .then(
+            function(data){
+                
+
+                // to move data to another page
+                navigate("Home" ,{uid:data.user.uid});
+
+            },
+            function(error){
+                var errorMessage = error.message;
+                alert(errorMessage.toString());
+
+            }
+        );
+
+    }
+}
+
+export default LoginPage;
